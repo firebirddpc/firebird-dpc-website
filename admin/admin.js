@@ -1,13 +1,15 @@
 const $ = (selector) => document.querySelector(selector);
 const api = "/api/blog/admin/posts";
+const contactApi = "/api/contact/admin";
 let posts = [];
+let messages = [];
 
 const today = () => new Date().toISOString().slice(0, 10);
 const slugify = (value) =>
   value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 function showOnly(id) {
-  ["#loading", "#login-panel", "#set-password-panel", "#forbidden-panel", "#editor-app"].forEach((selector) => {
+  ["#loading", "#login-panel", "#set-password-panel", "#forbidden-panel", "#editor-app", "#messages-app"].forEach((selector) => {
     $(selector).hidden = selector !== id;
   });
 }
@@ -84,7 +86,110 @@ async function loadPosts() {
   showOnly("#editor-app");
   renderList();
   clearForm();
+  refreshUnreadBadge();
 }
+
+function updateUnreadBadge() {
+  const unread = messages.filter((message) => !message.read).length;
+  const badge = $("#unread-badge");
+  badge.textContent = String(unread);
+  badge.hidden = unread === 0;
+}
+
+async function refreshUnreadBadge() {
+  try {
+    const response = await fetch(contactApi, { credentials: "same-origin" });
+    if (!response.ok) return;
+    messages = await response.json();
+    updateUnreadBadge();
+  } catch {
+    // Non-critical — the badge just won't update this time.
+  }
+}
+
+function renderMessages() {
+  const list = $("#message-list");
+  list.innerHTML = "";
+  if (!messages.length) {
+    list.innerHTML = "<p>No messages yet.</p>";
+    return;
+  }
+  messages.forEach((message) => {
+    const card = document.createElement("article");
+    card.className = message.read ? "message-card" : "message-card unread";
+
+    const submitted = new Date(message.submittedAt);
+    const details = [
+      ["Phone", message.phone],
+      ["Preferred contact", message.preferredContact],
+      ["Membership interest", message.membershipInterest],
+      ["Best time to contact", message.bestTime],
+      ["Consent to be contacted", message.consent ? "Yes" : "No"],
+    ].filter(([, value]) => value);
+
+    card.innerHTML = `
+      <div class="message-card-header">
+        <h3></h3>
+        <span class="message-card-meta"></span>
+      </div>
+      <dl></dl>
+      <p class="message-card-question"></p>
+      <div class="message-card-actions">
+        <button type="button" class="secondary-button" data-action="toggle-read">${message.read ? "Mark unread" : "Mark read"}</button>
+        <button type="button" class="danger-button" data-action="delete">Delete</button>
+      </div>
+    `;
+    card.querySelector("h3").textContent = `${message.fullName} — ${message.email}`;
+    card.querySelector(".message-card-meta").textContent = submitted.toLocaleString();
+    const dl = card.querySelector("dl");
+    details.forEach(([label, value]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      dl.append(dt, dd);
+    });
+    card.querySelector(".message-card-question").textContent = message.mainQuestion;
+
+    card.querySelector('[data-action="toggle-read"]').addEventListener("click", async () => {
+      const response = await fetch(`${contactApi}?id=${encodeURIComponent(message.id)}`, {
+        method: "PATCH",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ read: !message.read }),
+      });
+      if (!response.ok) return;
+      await loadMessages();
+    });
+    card.querySelector('[data-action="delete"]').addEventListener("click", async () => {
+      if (!confirm("Delete this message permanently?")) return;
+      const response = await fetch(`${contactApi}?id=${encodeURIComponent(message.id)}`, {
+        method: "DELETE",
+        credentials: "same-origin",
+      });
+      if (!response.ok) return;
+      await loadMessages();
+    });
+
+    list.append(card);
+  });
+}
+
+async function loadMessages() {
+  const response = await fetch(contactApi, { credentials: "same-origin" });
+  if (response.status === 401) return showOnly("#login-panel");
+  if (response.status === 403) return showOnly("#forbidden-panel");
+  if (!response.ok) throw new Error("Could not load messages.");
+  messages = await response.json();
+  updateUnreadBadge();
+  renderMessages();
+}
+
+$("#show-messages-button").addEventListener("click", async () => {
+  showOnly("#messages-app");
+  await loadMessages();
+});
+$("#show-posts-button").addEventListener("click", () => showOnly("#editor-app"));
 
 $("#set-password-form").addEventListener("submit", async (event) => {
   event.preventDefault();

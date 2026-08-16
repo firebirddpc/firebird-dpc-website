@@ -1,0 +1,9 @@
+# Local Netlify folder
+.netlify
+deno.lock
+
+# Dependencies
+node_modules/
+
+# Local tooling
+.claude/

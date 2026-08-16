@@ -59,7 +59,12 @@
             <p class="eyebrow">Firebird DPC</p>
             <h1>Blog Posts</h1>
           </div>
-          <button id="new-post-button" class="primary-button" type="button">Create post</button>
+          <div class="toolbar-actions">
+            <button id="show-messages-button" class="secondary-button" type="button">
+              View Messages <span id="unread-badge" class="badge" hidden>0</span>
+            </button>
+            <button id="new-post-button" class="primary-button" type="button">Create post</button>
+          </div>
         </div>
 
         <div class="editor-layout">
@@ -102,6 +107,17 @@
             </form>
           </section>
         </div>
+      </section>
+
+      <section id="messages-app" hidden>
+        <div class="editor-toolbar">
+          <div>
+            <p class="eyebrow">Firebird DPC</p>
+            <h1>Contact Messages</h1>
+          </div>
+          <button id="show-posts-button" class="secondary-button" type="button">&larr; Back to Blog Posts</button>
+        </div>
+        <div id="message-list" class="message-list"></div>
       </section>
     </main>
 

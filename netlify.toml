@@ -41,6 +41,16 @@ to = "/.netlify/functions/blog-image/:splat"
 status = 200
 
 [[redirects]]
+from = "/api/contact/submit"
+to = "/.netlify/functions/contact-submit"
+status = 200
+
+[[redirects]]
+from = "/api/contact/admin"
+to = "/.netlify/functions/contact-admin"
+status = 200
+
+[[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
 status = 200
