@@ -63,6 +63,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/about"
+to = "/about-crawlable.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
 status = 200
