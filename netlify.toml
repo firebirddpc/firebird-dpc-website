@@ -58,8 +58,9 @@ force = true
 
 [[redirects]]
 from = "/what-is-dpc"
-to = "/what-is-dpc.html"
+to = "/dpc-crawlable.html"
 status = 200
+force = true
 
 [[redirects]]
 from = "/blog/*"
