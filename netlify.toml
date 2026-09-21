@@ -57,6 +57,11 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/what-is-dpc"
+to = "/what-is-dpc.html"
+status = 200
+
+[[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
 status = 200
