@@ -88,6 +88,13 @@ to = "/faq-crawlable.html"
 status = 200
 force = true
 
+
+[[redirects]]
+from = "/contact"
+to = "/contact-crawlable.html"
+status = 200
+force = true
+
 [[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
