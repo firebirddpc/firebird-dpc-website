@@ -25,12 +25,6 @@
     <script type="module" crossorigin src="/assets/index-dikjnlja.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-c8u2kb5d.css">
     <style>
-      .firebird-worthington-link { display:none; padding:3.5rem 1.25rem; background:#fffaf2; }
-      .firebird-worthington-link.is-ready { display:block; }
-      .firebird-worthington-link-inner { max-width:72rem; margin:0 auto; padding:1.75rem; background:#fff; border:1px solid rgba(18,48,68,.1); border-radius:.9rem; box-shadow:0 12px 30px rgba(18,48,68,.07); }
-      .firebird-worthington-link h2 { margin:.75rem 0 0; color:#123044; font-family:Georgia,serif; font-size:clamp(1.75rem,3vw,2.5rem); line-height:1.1; }
-      .firebird-worthington-link p { max-width:52rem; margin:1rem 0 0; color:rgba(36,55,70,.78); line-height:1.7; }
-      .firebird-worthington-link a { display:inline-flex; margin-top:1.25rem; color:#c22626; font-weight:800; }
       .firebird-practice-gallery {
         display: none;
         padding: 4.5rem 1.25rem;
@@ -240,14 +234,6 @@
         </nav>
       </section>
     </main></div>
-    <section class="firebird-worthington-link" aria-label="Direct primary care in Worthington">
-      <div class="firebird-worthington-link-inner">
-        <p class="eyebrow">Worthington, Ohio</p>
-        <h2>Looking for Direct Primary Care in Worthington?</h2>
-        <p>Learn more about Firebird DPC’s Worthington practice, Dr. Mark Hagen, membership-based care, and primary care services for individuals and families in Central Ohio.</p>
-        <a href="/direct-primary-care-worthington-ohio">Direct Primary Care in Worthington →</a>
-      </div>
-    </section>
     <section class="firebird-practice-gallery" aria-label="Inside Firebird Direct Primary Care">
       <div class="container-page">
         <p class="eyebrow">Inside the practice</p>
@@ -282,12 +268,22 @@
           location.replace("/admin/" + location.hash);
           return;
         }
-        const worthingtonLink = document.querySelector(".firebird-worthington-link");
         const gallery = document.querySelector(".firebird-practice-gallery");
         const newsletter = document.querySelector(".firebird-newsletter");
         const meetAndGreetUrl = "/meet-and-greet.html";
         const youtubeUrl = "https://www.youtube.com/@FirebirdDirectPrimaryCare";
         const updateClientBranding = () => {
+          const worthingtonFooter = document.querySelector("#root footer");
+          if (worthingtonFooter && !worthingtonFooter.querySelector('[data-firebird-worthington-link="true"]')) {
+            const link = document.createElement("a");
+            link.href = "/direct-primary-care-worthington-ohio";
+            link.textContent = "Direct Primary Care in Worthington, Ohio";
+            link.dataset.firebirdWorthingtonLink = "true";
+            link.className = "text-white/78 hover:text-white";
+            const linkContainer = worthingtonFooter.querySelector("nav") || worthingtonFooter.querySelector("div");
+            if (linkContainer) linkContainer.append(link);
+          }
+
           const headerLogo = document.querySelector("#root header img");
           if (headerLogo) {
             headerLogo.src = "/images/firebird-logo-rectangle-rising.png";
@@ -436,13 +432,6 @@
             }
           });
         };
-        const placeWorthingtonLink = () => {
-          const footer = document.querySelector("#root footer");
-          if (!footer || !worthingtonLink) return false;
-          footer.before(worthingtonLink);
-          worthingtonLink.classList.add("is-ready");
-          return true;
-        };
         const placeGallery = () => {
           const footer = document.querySelector("#root footer");
           if (!footer || !gallery || gallery.classList.contains("is-ready")) return false;
@@ -457,11 +446,9 @@
           newsletter.classList.add("is-ready");
           return true;
         };
-        placeWorthingtonLink();
         if (!placeGallery()) {
           const observer = new MutationObserver(() => {
-            placeWorthingtonLink();
-            placeGallery();
+                placeGallery();
             placeNewsletter();
             addBlogLinks();
             updateMeetAndGreetLinks();
@@ -470,7 +457,6 @@
           });
           observer.observe(document.getElementById("root"), { childList: true, subtree: true });
         }
-        placeWorthingtonLink();
         placeNewsletter();
         addBlogLinks();
         updateMeetAndGreetLinks();
