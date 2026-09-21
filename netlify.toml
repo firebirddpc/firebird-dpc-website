@@ -74,6 +74,13 @@ to = "/membership-crawlable.html"
 status = 200
 force = true
 
+
+[[redirects]]
+from = "/services"
+to = "/services-crawlable.html"
+status = 200
+force = true
+
 [[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
