@@ -96,6 +96,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/direct-primary-care-worthington-ohio"
+to = "/worthington-crawlable.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
 status = 200
