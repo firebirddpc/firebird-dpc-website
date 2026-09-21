@@ -457,8 +457,10 @@
           newsletter.classList.add("is-ready");
           return true;
         };
+        placeWorthingtonLink();
         if (!placeGallery()) {
           const observer = new MutationObserver(() => {
+            placeWorthingtonLink();
             placeGallery();
             placeNewsletter();
             addBlogLinks();
@@ -468,6 +470,7 @@
           });
           observer.observe(document.getElementById("root"), { childList: true, subtree: true });
         }
+        placeWorthingtonLink();
         placeNewsletter();
         addBlogLinks();
         updateMeetAndGreetLinks();
