@@ -51,6 +51,12 @@ to = "/.netlify/functions/contact-admin"
 status = 200
 
 [[redirects]]
+from = "/whatisdpc"
+to = "/what-is-dpc"
+status = 301
+force = true
+
+[[redirects]]
 from = "/blog/*"
 to = "/blog/article.html"
 status = 200
