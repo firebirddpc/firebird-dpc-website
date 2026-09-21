@@ -25,7 +25,7 @@
     <script type="module" crossorigin src="/assets/index-dikjnlja.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-c8u2kb5d.css">
     <style>
-      .firebird-practice-gallery {
+      .firebird-worthington-link { display:none; padding:3.5rem 1.25rem; background:#fffaf2; }\n      .firebird-worthington-link.is-ready { display:block; }\n      .firebird-worthington-link-inner { max-width:72rem; margin:0 auto; padding:1.75rem; background:#fff; border:1px solid rgba(18,48,68,.1); border-radius:.9rem; box-shadow:0 12px 30px rgba(18,48,68,.07); }\n      .firebird-worthington-link h2 { margin:.75rem 0 0; color:#123044; font-family:Georgia,serif; font-size:clamp(1.75rem,3vw,2.5rem); line-height:1.1; }\n      .firebird-worthington-link p { max-width:52rem; margin:1rem 0 0; color:rgba(36,55,70,.78); line-height:1.7; }\n      .firebird-worthington-link a { display:inline-flex; margin-top:1.25rem; color:#c22626; font-weight:800; }\n      .firebird-practice-gallery {
         display: none;
         padding: 4.5rem 1.25rem;
         background: #fffaf2;
@@ -229,11 +229,11 @@
           <a href="/membership">Membership and Pricing</a>
           <a href="/services">Primary Care Services</a>
           <a href="/about">Meet the Firebird DPC Team</a>
-          <a href="/contact">Contact Firebird DPC</a>
+          <a href="/contact">Contact Firebird DPC</a>\n          <a href="/direct-primary-care-worthington-ohio">Direct Primary Care in Worthington, Ohio</a>
         </nav>
       </section>
     </main></div>
-    <section class="firebird-practice-gallery" aria-label="Inside Firebird Direct Primary Care">
+    <section class="firebird-worthington-link" aria-label="Direct primary care in Worthington">\n      <div class="firebird-worthington-link-inner">\n        <p class="eyebrow">Worthington, Ohio</p>\n        <h2>Looking for Direct Primary Care in Worthington?</h2>\n        <p>Learn more about Firebird DPC’s Worthington practice, Dr. Mark Hagen, membership-based care, and primary care services for individuals and families in Central Ohio.</p>\n        <a href="/direct-primary-care-worthington-ohio">Direct Primary Care in Worthington →</a>\n      </div>\n    </section>\n    <section class="firebird-practice-gallery" aria-label="Inside Firebird Direct Primary Care">
       <div class="container-page">
         <p class="eyebrow">Inside the practice</p>
         <h2>A Welcoming Space for Personal Care</h2>
@@ -267,7 +267,7 @@
           location.replace("/admin/" + location.hash);
           return;
         }
-        const gallery = document.querySelector(".firebird-practice-gallery");
+        const worthingtonLink = document.querySelector(".firebird-worthington-link");\n        const gallery = document.querySelector(".firebird-practice-gallery");
         const newsletter = document.querySelector(".firebird-newsletter");
         const meetAndGreetUrl = "/meet-and-greet.html";
         const youtubeUrl = "https://www.youtube.com/@FirebirdDirectPrimaryCare";
@@ -420,7 +420,7 @@
             }
           });
         };
-        const placeGallery = () => {
+        const placeWorthingtonLink = () => {\n          const footer = document.querySelector("#root footer");\n          if (!footer || !worthingtonLink) return false;\n          footer.before(worthingtonLink);\n          worthingtonLink.classList.add("is-ready");\n          return true;\n        };\n        const placeGallery = () => {
           const footer = document.querySelector("#root footer");
           if (!footer || !gallery || gallery.classList.contains("is-ready")) return false;
           footer.before(gallery);
