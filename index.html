@@ -230,6 +230,7 @@
           <a href="/services">Primary Care Services</a>
           <a href="/about">Meet the Firebird DPC Team</a>
           <a href="/contact">Contact Firebird DPC</a>
+          <a href="/direct-primary-care-worthington-ohio">Direct Primary Care in Worthington, Ohio</a>
         </nav>
       </section>
     </main></div>
@@ -272,6 +273,17 @@
         const meetAndGreetUrl = "/meet-and-greet.html";
         const youtubeUrl = "https://www.youtube.com/@FirebirdDirectPrimaryCare";
         const updateClientBranding = () => {
+          const worthingtonFooter = document.querySelector("#root footer");
+          if (worthingtonFooter && !worthingtonFooter.querySelector('[data-firebird-worthington-link="true"]')) {
+            const link = document.createElement("a");
+            link.href = "/direct-primary-care-worthington-ohio";
+            link.textContent = "Direct Primary Care in Worthington, Ohio";
+            link.dataset.firebirdWorthingtonLink = "true";
+            link.className = "text-white/78 hover:text-white";
+            const linkContainer = worthingtonFooter.querySelector("nav") || worthingtonFooter.querySelector("div");
+            if (linkContainer) linkContainer.append(link);
+          }
+
           const headerLogo = document.querySelector("#root header img");
           if (headerLogo) {
             headerLogo.src = "/images/firebird-logo-rectangle-rising.png";
@@ -436,7 +448,7 @@
         };
         if (!placeGallery()) {
           const observer = new MutationObserver(() => {
-            placeGallery();
+                placeGallery();
             placeNewsletter();
             addBlogLinks();
             updateMeetAndGreetLinks();
