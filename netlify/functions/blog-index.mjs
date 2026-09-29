@@ -38,8 +38,8 @@ export async function handler(e) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#123044">
-  <title>Blog | Firebird Direct Primary Care</title>
-  <meta name="description" content="Articles from Dr. Mark Hagen and Firebird Direct Primary Care in Worthington, Ohio.">
+  <title>Primary Care &amp; Health Blog | Worthington, Ohio | Firebird DPC</title>
+  <meta name="description" content="Practical primary care, prevention, family medicine, and health articles from Dr. Mark Hagen, DO at Firebird Direct Primary Care in Worthington, Ohio.">
   <link rel="canonical" href="https://firebirddpc.com/blog/">
   <link rel="stylesheet" href="/blog.css">
 </head>
@@ -57,7 +57,7 @@ export async function handler(e) {
     </div>
   </header>
   <main>
-    <section class="blog-hero"><div class="blog-shell"><p class="blog-eyebrow">Insights from Dr. Hagen</p><h1>The Firebird DPC Blog</h1><p>Clear, useful perspectives on primary care, prevention, and building a healthier life.</p></div></section>
+    <section class="blog-hero"><div class="blog-shell"><p class="blog-eyebrow">Insights from Dr. Hagen</p><h1>Primary Care &amp; Health Articles from Firebird DPC</h1><p>Practical guidance on primary care, prevention, family medicine, and the direct primary care model from Dr. Mark Hagen, DO in Worthington, Ohio.</p><p><a href="/family-medicine-worthington-ohio">Family Medicine in Worthington</a> · <a href="/what-is-dpc">How Direct Primary Care Works</a> · <a href="/primary-care-without-insurance-columbus-ohio">Primary Care Without Insurance</a></p></div></section>
     <section class="blog-main"><div class="blog-shell"><div id="blog-posts" class="blog-grid">${cards}</div></div></section>
   </main>
   <footer class="blog-footer"><div class="blog-shell blog-footer__inner"><span>© 2026 Firebird Direct Primary Care</span><span>Worthington, Ohio</span></div></footer>
