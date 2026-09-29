@@ -57,6 +57,18 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/drhagen"
+to = "/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "/what-is-dpc.html"
+to = "/what-is-dpc"
+status = 301
+force = true
+
+[[redirects]]
 from = "/what-is-dpc"
 to = "/dpc-crawlable.html"
 status = 200
