@@ -102,9 +102,22 @@ status = 200
 force = true
 
 [[redirects]]
-from = "/blog/*"
-to = "/blog/article.html"
+from = "/sitemap.xml"
+to = "/.netlify/functions/blog-sitemap"
 status = 200
+force = true
+
+[[redirects]]
+from = "/blog/"
+to = "/blog/index.html"
+status = 200
+force = true
+
+[[redirects]]
+from = "/blog/*"
+to = "/.netlify/functions/blog-article"
+status = 200
+force = true
 
 [[redirects]]
 from = "/*"
