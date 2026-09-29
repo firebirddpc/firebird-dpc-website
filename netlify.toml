@@ -108,6 +108,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/blog/"
+to = "/blog/index.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/blog/*"
 to = "/.netlify/functions/blog-article"
 status = 200
