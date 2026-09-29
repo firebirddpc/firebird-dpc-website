@@ -41,6 +41,10 @@ export async function handler(e) {
   <title>Primary Care &amp; Health Blog | Worthington, Ohio | Firebird DPC</title>
   <meta name="description" content="Practical primary care, prevention, family medicine, and health articles from Dr. Mark Hagen, DO at Firebird Direct Primary Care in Worthington, Ohio.">
   <link rel="canonical" href="https://firebirddpc.com/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Primary Care &amp; Health Blog | Worthington, Ohio | Firebird DPC">
+  <meta property="og:description" content="Practical primary care, prevention, family medicine, and health articles from Dr. Mark Hagen, DO at Firebird Direct Primary Care in Worthington, Ohio.">
+  <meta property="og:url" content="https://firebirddpc.com/blog/">
   <link rel="stylesheet" href="/blog.css">
 </head>
 <body>
