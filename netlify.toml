@@ -114,6 +114,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/primary-care-without-insurance-columbus-ohio"
+to = "/primary-care-without-insurance-columbus.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/osteopathic-manipulation-worthington-ohio"
 to = "/osteopathic-manipulation-worthington.html"
 status = 200
