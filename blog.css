@@ -285,3 +285,18 @@ a {
     flex-direction: column;
   }
 }
+
+.article-author,.article-cta{margin-top:3.5rem;padding:1.6rem 1.8rem;border:1px solid var(--line);border-radius:.8rem;background:var(--paper);font-family:Arial,Helvetica,sans-serif}
+.article-author__eyebrow,.article-cta__eyebrow{margin:0 0:.4rem;color:var(--accent);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.article-author h2,.article-cta h2{margin:.1rem 0 .65rem;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem}
+.article-author p,.article-cta p{margin:.4rem 0;color:var(--muted);font-size:1rem}
+.article-author a{color:var(--accent);font-weight:700}
+.article-cta{background:var(--ink);color:white}
+.article-cta h2{color:white}
+.article-cta p{color:#d8e0e5}
+.article-cta__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}
+.article-cta__actions a{padding:.7rem 1rem;border:1px solid rgba(255,255,255,.5);border-radius:.45rem;color:white;font-size:.92rem;font-weight:700;text-decoration:none}
+.article-cta__actions .article-cta__primary{background:#c22626;border-color:#c22626}
+.article-next{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;font-family:Arial,Helvetica,sans-serif;font-size:.95rem;font-weight:700}
+.article-next a{color:var(--accent)}
+@media(max-width:600px){.article-next{flex-direction:column}.article-author,.article-cta{padding:1.3rem}}
