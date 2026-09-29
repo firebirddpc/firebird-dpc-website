@@ -71,7 +71,7 @@ function renderList() {
     button.dataset.id = post.id;
     button.innerHTML = `<strong></strong><small></small>`;
     button.querySelector("strong").textContent = post.title;
-    const isScheduled = post.status === "published" && new Date(post.date) > new Date();
+    const isScheduled = post.status === "scheduled" || (post.status === "published" && new Date(post.date) > new Date());
     const displayStatus = isScheduled ? "Scheduled" : post.status;
     button.querySelector("small").textContent = `${displayStatus} · ${new Date(post.date).toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" })} ET`;
     button.addEventListener("click", () => {
