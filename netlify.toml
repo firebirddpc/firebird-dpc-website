@@ -114,6 +114,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/family-medicine-worthington-ohio"
+to = "/family-medicine-worthington.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/employers"
 to = "/employers-crawlable.html"
 status = 200
