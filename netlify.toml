@@ -114,6 +114,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/osteopathic-manipulation-worthington-ohio"
+to = "/osteopathic-manipulation-worthington.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/family-medicine-worthington-ohio"
 to = "/family-medicine-worthington.html"
 status = 200
