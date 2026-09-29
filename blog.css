@@ -300,3 +300,10 @@ a {
 .article-next{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;font-family:Arial,Helvetica,sans-serif;font-size:.95rem;font-weight:700}
 .article-next a{color:var(--accent)}
 @media(max-width:600px){.article-next{flex-direction:column}.article-author,.article-cta{padding:1.3rem}}
+
+.article-related{margin-top:3rem;padding:1.4rem 1.6rem;border-left:4px solid #c22626;background:#f7f4ef;font-family:Arial,Helvetica,sans-serif}
+.article-related__eyebrow{margin:0 0:.3rem;color:#c22626;font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.article-related h2{margin:.1rem 0 .7rem;font-family:Georgia,"Times New Roman",serif;font-size:1.45rem}
+.article-related ul{margin:0;padding-left:1.15rem}
+.article-related li{margin:.45rem 0}
+.article-related a{font-weight:700}
