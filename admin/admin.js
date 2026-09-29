@@ -26,6 +26,7 @@ function clearForm() {
   $("#post-id").value = "";
   $("#post-author").value = "Dr. Mark Hagen";
   $("#post-date").value = today();
+  $("#post-time").value = "07:00";
   $("#post-featured-image").value = "";
   $("#image-preview-wrap").hidden = true;
   $("#delete-post-button").hidden = true;
@@ -39,7 +40,10 @@ function fillForm(post) {
   $("#post-slug").value = post.slug;
   $("#post-description").value = post.description;
   $("#post-author").value = post.author;
-  $("#post-date").value = post.date.slice(0, 10);
+  const scheduled = new Date(post.date);
+  const easternParts = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(scheduled).reduce((a, p) => (a[p.type] = p.value, a), {});
+  $("#post-date").value = `${easternParts.year}-${easternParts.month}-${easternParts.day}`;
+  $("#post-time").value = `${easternParts.hour}:${easternParts.minute}`;
   $("#post-status").value = post.status;
   $("#post-featured-image").value = post.featuredImage || "";
   $("#post-image-alt").value = post.imageAlt || "";
@@ -67,7 +71,9 @@ function renderList() {
     button.dataset.id = post.id;
     button.innerHTML = `<strong></strong><small></small>`;
     button.querySelector("strong").textContent = post.title;
-    button.querySelector("small").textContent = `${post.status} · ${post.date.slice(0, 10)}`;
+    const isScheduled = post.status === "scheduled" || (post.status === "published" && new Date(post.date) > new Date());
+    const displayStatus = isScheduled ? "Scheduled" : post.status;
+    button.querySelector("small").textContent = `${displayStatus} · ${new Date(post.date).toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" })} ET`;
     button.addEventListener("click", () => {
       document.querySelectorAll(".post-list button").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
@@ -256,7 +262,7 @@ $("#post-form").addEventListener("submit", async (event) => {
     slug: slugify($("#post-slug").value),
     description: $("#post-description").value.trim(),
     author: $("#post-author").value.trim(),
-    date: $("#post-date").value,
+    date: `${$("#post-date").value}T${$("#post-time").value}:00`,
     status: $("#post-status").value,
     featuredImage: $("#post-featured-image").value,
     imageAlt: $("#post-image-alt").value.trim(),
