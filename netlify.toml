@@ -127,7 +127,7 @@ force = true
 
 [[redirects]]
 from = "/blog/"
-to = "/blog/index.html"
+to = "/.netlify/functions/blog-index"
 status = 200
 force = true
 
