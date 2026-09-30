@@ -79,8 +79,14 @@ force = true
 
 [[redirects]]
 from = "/new-page"
-to = "/"
+to = "/our-office"
 status = 301
+force = true
+
+[[redirects]]
+from = "/our-office"
+to = "/our-office.html"
+status = 200
 force = true
 
 [[redirects]]
