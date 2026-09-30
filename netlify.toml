@@ -90,6 +90,12 @@ status = 200
 force = true
 
 [[redirects]]
+from = "/our-office"
+to = "/our-office.html"
+status = 200
+force = true
+
+[[redirects]]
 from = "/whatisdpc"
 to = "/what-is-dpc"
 status = 301
