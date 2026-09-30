@@ -50,6 +50,51 @@ from = "/api/contact/admin"
 to = "/.netlify/functions/contact-admin"
 status = 200
 
+# Normalize the public hostname before route handling.
+[[redirects]]
+from = "https://www.firebirddpc.com/*"
+to = "https://firebirddpc.com/:splat"
+status = 301
+force = true
+
+# Retire legacy Squarespace/SPA routes that Google still knows about.
+# These must appear before the 200 rewrites and final SPA catch-all.
+[[redirects]]
+from = "/memberships"
+to = "/membership"
+status = 301
+force = true
+
+[[redirects]]
+from = "/larkenrn"
+to = "/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "/testimonials"
+to = "/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/new-page"
+to = "/our-office"
+status = 301
+force = true
+
+[[redirects]]
+from = "/our-office"
+to = "/our-office.html"
+status = 200
+force = true
+
+[[redirects]]
+from = "/our-office"
+to = "/our-office.html"
+status = 200
+force = true
+
 [[redirects]]
 from = "/whatisdpc"
 to = "/what-is-dpc"
