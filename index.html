@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#123044" />
     <!-- Netlify deployment refresh after repository visibility update -->
+    <!-- Trigger PR #37 deploy preview after enabling Netlify deploy previews; no functional change. -->
     <title>Firebird Direct Primary Care | Worthington, Ohio</title>
     <link rel="canonical" href="https://firebirddpc.com/" />
     <meta property="og:title" content="Firebird Direct Primary Care | Worthington, Ohio" />
@@ -265,6 +266,44 @@
         </form>
       </div>
     </section>
+    <style>
+      .firebird-mobile-enroll { display: none; }
+      @media (max-width: 1023px) {
+        .firebird-mobile-enroll {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 42px;
+          padding: 0.55rem 0.85rem;
+          border-radius: 0.45rem;
+          background: #c22626;
+          color: #fff;
+          font-size: 0.875rem;
+          font-weight: 700;
+          text-decoration: none;
+          white-space: nowrap;
+        }
+        .firebird-mobile-enroll:focus-visible { outline: 3px solid #123044; outline-offset: 3px; }
+      }
+      @media (max-width: 420px) {
+        #root header > div:first-child { gap: 0.5rem; padding-left: 0.75rem; padding-right: 0.75rem; }
+        #root header a[aria-label="Firebird Direct Primary Care home"] {
+          width: 30vw;
+          min-width: 0;
+          flex-shrink: 1;
+        }
+        #root header a[aria-label="Firebird Direct Primary Care home"] img {
+          max-width: 100%;
+        }
+        .firebird-mobile-enroll {
+          flex-shrink: 0;
+          font-size: 0.8rem;
+          padding: 0.5rem 0.6rem;
+        }
+        #root header button[aria-label="Open menu"],
+        #root header button[aria-label="Close menu"] { flex-shrink: 0; }
+      }
+    </style>
     <script>
       (() => {
         if (/(invite|recovery)_token=/.test(location.hash) && location.pathname !== "/admin/") {
@@ -275,6 +314,18 @@
         const newsletter = document.querySelector(".firebird-newsletter");
         const meetAndGreetUrl = "/meet-and-greet.html";
         const youtubeUrl = "https://www.youtube.com/@FirebirdDirectPrimaryCare";
+        const ensureMobileEnrollLink = () => {
+          const header = document.querySelector("#root header");
+          if (!header || header.querySelector(".firebird-mobile-enroll")) return;
+          const menuButton = header.querySelector('button[aria-label="Open menu"], button[aria-label="Close menu"]');
+          if (!menuButton) return;
+          const enrollLink = document.createElement("a");
+          enrollLink.href = "https://firebirddirectprimarycare.atlas.md/enrollment/index.html?account=aU1HpP3oGYg54RXCEjlJ";
+          enrollLink.textContent = "Enroll Now";
+          enrollLink.className = "firebird-mobile-enroll";
+          enrollLink.setAttribute("aria-label", "Enroll in Firebird Direct Primary Care");
+          menuButton.before(enrollLink);
+        };
         const updateClientBranding = () => {
           const worthingtonFooter = document.querySelector("#root footer");
           if (worthingtonFooter && !worthingtonFooter.querySelector('[data-firebird-worthington-link="true"]')) {
@@ -456,6 +507,7 @@
             addBlogLinks();
             updateMeetAndGreetLinks();
             updateClientBranding();
+            ensureMobileEnrollLink();
             addLarkenTeamProfile();
           });
           observer.observe(document.getElementById("root"), { childList: true, subtree: true });
@@ -464,6 +516,7 @@
         addBlogLinks();
         updateMeetAndGreetLinks();
         updateClientBranding();
+        ensureMobileEnrollLink();
         addLarkenTeamProfile();
       })();
     </script>
