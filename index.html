@@ -486,6 +486,16 @@
             }
           });
         };
+        const addPrivacyNoticeLink = () => {
+          const footer = document.querySelector("#root footer");
+          if (!footer || footer.querySelector('[data-firebird-privacy-notice="true"]')) return;
+          const link = document.createElement("a");
+          link.href = "/privacy-notice.html";
+          link.textContent = "Notice of Privacy Practices";
+          link.dataset.firebirdPrivacyNotice = "true";
+          link.style.cssText = "display:inline-block;margin:0.6rem 1rem 0.6rem 0;text-decoration:underline";
+          (footer.querySelector("nav") || footer).append(link);
+        };
         const placeGallery = () => {
           const footer = document.querySelector("#root footer");
           if (!footer || !gallery || gallery.classList.contains("is-ready")) return false;
@@ -505,6 +515,7 @@
                 placeGallery();
             placeNewsletter();
             addBlogLinks();
+            addPrivacyNoticeLink();
             updateMeetAndGreetLinks();
             updateClientBranding();
             ensureMobileEnrollLink();
@@ -513,6 +524,7 @@
           observer.observe(document.getElementById("root"), { childList: true, subtree: true });
         }
         placeNewsletter();
+        addPrivacyNoticeLink();
         addBlogLinks();
         updateMeetAndGreetLinks();
         updateClientBranding();
