@@ -20,6 +20,11 @@
       .meeting-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
       .meeting-actions a { padding: .9rem 1.2rem; color: white; background: #c7623c; border-radius: .45rem; font-weight: 800; text-decoration: none; }
       .meeting-actions a:last-child { color: #123044; background: #f1e6d7; }
+      .meeting-actions a:focus-visible { outline: 3px solid #123044; outline-offset: 4px; }
+      @media (max-width: 520px) {
+        .meeting-actions { flex-direction: column; }
+        .meeting-actions a { text-align: center; }
+      }
     </style>
   </head>
   <body>
