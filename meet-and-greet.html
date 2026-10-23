@@ -21,8 +21,21 @@
       .meeting-actions a { padding: .9rem 1.2rem; color: white; background: #c7623c; border-radius: .45rem; font-weight: 800; text-decoration: none; }
       .meeting-actions a:last-child { color: #123044; background: #f1e6d7; }
       .meeting-actions a:focus-visible { outline: 3px solid #123044; outline-offset: 4px; }
-      @media (max-width: 520px) {
-        .meeting-actions { flex-direction: column; }
+      @media (max-width: 600px) {
+        .blog-header__inner { gap: 0.75rem; }
+        .blog-nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.15rem 0.75rem;
+          overflow: visible;
+          padding-bottom: 0;
+        }
+        .blog-nav a { display: block; padding: 0.4rem 0; line-height: 1.35; }
+        .meeting-main { padding: 2rem 0 3rem; }
+        .meeting-card { padding: 1.25rem; }
+        .meeting-card h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); line-height: 1.13; overflow-wrap: break-word; }
+        .meeting-card > p { font-size: 1rem; }
+        .meeting-actions { flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
         .meeting-actions a { text-align: center; }
       }
     </style>
