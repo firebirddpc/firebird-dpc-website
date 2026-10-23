@@ -64,7 +64,7 @@ export async function handler(e) {
     <section class="blog-hero"><div class="blog-shell"><p class="blog-eyebrow">Insights from Dr. Hagen</p><h1>Primary Care &amp; Health Articles from Firebird DPC</h1><p>Practical guidance on primary care, prevention, family medicine, and the direct primary care model from Dr. Mark Hagen, DO in Worthington, Ohio.</p><p><a href="/family-medicine-worthington-ohio">Family Medicine in Worthington</a> · <a href="/what-is-dpc">How Direct Primary Care Works</a> · <a href="/primary-care-without-insurance-columbus-ohio">Primary Care Without Insurance</a></p></div></section>
     <section class="blog-main"><div class="blog-shell"><div id="blog-posts" class="blog-grid">${cards}</div></div></section>
   </main>
-  <footer class="blog-footer"><div class="blog-shell blog-footer__inner"><span>© 2026 Firebird Direct Primary Care</span><span>Worthington, Ohio</span></div></footer>
+  <footer class="blog-footer"><div class="blog-shell blog-footer__inner"><span>© 2026 Firebird Direct Primary Care</span><span>Worthington, Ohio</span><a href="/privacy-notice.html" style="color:inherit;text-decoration:underline">Notice of Privacy Practices</a></div></footer>
 </body>
 </html>`;
 
