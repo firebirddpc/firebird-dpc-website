@@ -547,5 +547,70 @@
       window.location.assign(url.href);
     }, true);
   </script>
+<script>
+/* Privacy-first, opt-in measurement: no analytics tag or cookies before consent.
+   No automatic page views, form data, search terms, full URLs, or user identifiers. */
+(function(){
+  "use strict";
+  var measurementId="G-BHYE1KXPC7";
+  var consentKey="firebird_analytics_consent";
+  var consent;
+  try { consent=sessionStorage.getItem(consentKey); } catch(e) { consent=null; }
+  function track(kind){
+    if(consent!=="yes" || typeof window.gtag!=="function") return;
+    window.gtag("event",kind,{send_to:measurementId});
+  }
+  function enable(){
+    if(window.firebirdAnalyticsEnabled) return;
+    window.firebirdAnalyticsEnabled=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){window.dataLayer.push(arguments);};
+    window.gtag("js",new Date());
+    window.gtag("config",measurementId,{
+      send_page_view:false,
+      allow_google_signals:false,
+      allow_ad_personalization_signals:false,
+      restricted_data_processing:true
+    });
+    var tag=document.createElement("script");
+    tag.async=true;
+    tag.src="https://www.googletagmanager.com/gtag/js?id="+measurementId;
+    document.head.appendChild(tag);
+  }
+  if(consent==="yes") enable();
+  document.addEventListener("click",function(e){
+    var link=e.target.closest && e.target.closest("a[href]");
+    if(!link) return;
+    var text=(link.textContent||"").trim().toLowerCase();
+    var url;
+    try {url=new URL(link.href,location.href);} catch(err){return;}
+    if(url.hostname==="firebirddirectprimarycare.atlas.md" && url.pathname.indexOf("/enrollment")===0) track("enroll_click");
+    else if(/meet\s*(?:&|and)\s*greet|schedule a meet/i.test(text) || url.pathname==="/meet-and-greet.html") track("meet_greet_click");
+    else if(url.pathname==="/contact" || url.pathname==="/contact.html" || url.protocol==="tel:" || url.protocol==="mailto:") track("contact_click");
+  },true);
+  if(consent!==null) return;
+  function showConsent(){
+    if(document.getElementById("firebird-analytics-choice")) return;
+    var box=document.createElement("div");
+    box.id="firebird-analytics-choice";
+    box.setAttribute("role","region");
+    box.setAttribute("aria-label","Optional website analytics");
+    box.style.cssText="position:fixed;bottom:12px;left:12px;right:12px;z-index:9999;max-width:560px;background:#fff;color:#123044;border:1px solid #d8dfe3;border-radius:12px;box-shadow:0 5px 25px #12304430;padding:18px;font:14px/1.5 system-ui,sans-serif";
+    var msg=document.createElement("p");
+    msg.textContent="Help us understand which website links are useful. Optional Google Analytics only records selected button clicks after you agree. Please do not enter medical information here.";
+    msg.style.margin="0 0 12px";
+    var yes=document.createElement("button"),no=document.createElement("button");
+    yes.textContent="Allow analytics";no.textContent="No thanks";
+    [yes,no].forEach(function(b){b.type="button";b.style.cssText="padding:9px 14px;margin-right:10px;border-radius:6px;cursor:pointer;border:1px solid #123044"});
+    yes.style.background="#c22626";yes.style.color="#fff";yes.style.borderColor="#c22626";
+    no.style.background="#fff";no.style.color="#123044";
+    yes.onclick=function(){consent="yes";try{sessionStorage.setItem(consentKey,consent);}catch(e){}box.remove();enable();};
+    no.onclick=function(){consent="no";try{sessionStorage.setItem(consentKey,consent);}catch(e){}box.remove();};
+    box.append(msg,yes,no);document.body.appendChild(box);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",showConsent);
+  else showConsent();
+})();
+</script>
 </body>
 </html>
