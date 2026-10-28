@@ -217,7 +217,8 @@
       <input name="bestTime" />
       <input name="consent" />
     </form>
-    <div id="root"><main aria-label="Firebird Direct Primary Care">
+    <!-- Show the text fallback only when scripting is disabled; React replaces it on startup. -->
+    <div id="root"><noscript><main aria-label="Firebird Direct Primary Care">
       <section>
         <p>Direct Primary Care in Worthington, Ohio</p>
         <h1>Firebird Direct Primary Care</h1>
@@ -237,7 +238,7 @@
           <a href="/employers">Direct Primary Care for Small Businesses</a>
         </nav>
       </section>
-    </main></div>
+    </main></noscript></div>
     <section class="firebird-practice-gallery" aria-label="Inside Firebird Direct Primary Care">
       <div class="container-page">
         <p class="eyebrow">Inside the practice</p>
