@@ -203,8 +203,22 @@
         }
       }
     </style>
-  </head>
+  <link rel="stylesheet" href="/site-header.css">
+</head>
   <body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-current="page" aria-label="Firebird Direct Primary Care home"><img src="/images/firebird-logo-rectangle-rising.png" alt="Firebird Direct Primary Care - Rising Above Traditional Medicine" width="1424" height="745"></a>
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <a href="/" aria-current="page">Home</a><a href="/what-is-dpc">What Is DPC?</a><a href="/membership">Membership</a><a href="/services">Services</a><a href="/about">Meet the Team</a><a href="/faq">FAQ</a><a href="/blog/">Blog</a><a href="/contact">Contact</a>
+    </nav>
+    <div class="site-header__actions"><a class="site-header__button" href="/meet-and-greet.html">Meet &amp; Greet</a><a class="site-header__button site-header__button--primary" href="https://firebirddirectprimarycare.atlas.md/enrollment/index.html?account=aU1HpP3oGYg54RXCEjlJ" target="_blank" rel="noreferrer">Enroll Now</a></div>
+    <details class="site-header__mobile">
+      <summary aria-label="Toggle navigation menu"><span aria-hidden="true">☰</span><span>Menu</span></summary>
+      <nav aria-label="Mobile navigation"><a href="/" aria-current="page">Home</a><a href="/what-is-dpc">What Is DPC?</a><a href="/membership">Membership</a><a href="/services">Services</a><a href="/about">Meet the Team</a><a href="/faq">FAQ</a><a href="/blog/">Blog</a><a href="/contact">Contact</a><a href="/meet-and-greet.html">Meet &amp; Greet</a></nav>
+    </details>
+  </div>
+</header>
     <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
       <input name="bot-field" />
@@ -542,7 +556,7 @@
       if (!link || (link.target && link.target !== "_self") || link.hasAttribute("download")) return;
       const url = new URL(link.href, window.location.href);
       if (url.origin !== window.location.origin) return;
-      if (!["/what-is-dpc", "/services", "/contact", "/membership"].includes(url.pathname.replace(/\/$/, ""))) return;
+      if (!["/what-is-dpc", "/services", "/contact", "/membership", "/about", "/faq"].includes(url.pathname.replace(/\/$/, ""))) return;
       event.preventDefault();
       event.stopPropagation();
       window.location.assign(url.href);

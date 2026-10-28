@@ -46,20 +46,22 @@ export async function handler(e) {
   <meta property="og:description" content="Practical primary care, prevention, family medicine, and health articles from Dr. Mark Hagen, DO at Firebird Direct Primary Care in Worthington, Ohio.">
   <meta property="og:url" content="https://firebirddpc.com/blog/">
   <link rel="stylesheet" href="/blog.css">
+<link rel="stylesheet" href="/site-header.css">
 </head>
 <body>
-  <header class="blog-header">
-    <div class="blog-shell blog-header__inner">
-      <a class="blog-logo" href="/" aria-label="Firebird Direct Primary Care home"><img src="/images/firebird-logo-rectangle-rising.png" alt="Firebird Direct Primary Care - Rising Above Traditional Medicine"></a>
-      <nav class="blog-nav" aria-label="Main navigation">
-        <a href="/">Home</a><a href="/what-is-dpc">What Is DPC?</a><a href="/membership">Membership</a><a href="/services">Services</a><a href="/about">Meet the Team</a><a href="/faq">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/contact">Contact</a>
-      </nav>
-      <div class="blog-header-actions">
-        <a class="blog-header-button blog-header-button--secondary" href="/meet-and-greet.html">Meet &amp; Greet</a>
-        <a class="blog-header-button blog-header-button--primary" href="https://firebirddirectprimarycare.atlas.md/enrollment/index.html?account=aU1HpP3oGYg54RXCEjlJ" target="_blank" rel="noreferrer">Enroll Now</a>
-      </div>
-    </div>
-  </header>
+  <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Firebird Direct Primary Care home"><img src="/images/firebird-logo-rectangle-rising.png" alt="Firebird Direct Primary Care - Rising Above Traditional Medicine" width="1424" height="745"></a>
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <a href="/">Home</a><a href="/what-is-dpc">What Is DPC?</a><a href="/membership">Membership</a><a href="/services">Services</a><a href="/about">Meet the Team</a><a href="/faq">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/contact">Contact</a>
+    </nav>
+    <div class="site-header__actions"><a class="site-header__button" href="/meet-and-greet.html">Meet &amp; Greet</a><a class="site-header__button site-header__button--primary" href="https://firebirddirectprimarycare.atlas.md/enrollment/index.html?account=aU1HpP3oGYg54RXCEjlJ" target="_blank" rel="noreferrer">Enroll Now</a></div>
+    <details class="site-header__mobile">
+      <summary aria-label="Toggle navigation menu"><span aria-hidden="true">☰</span><span>Menu</span></summary>
+      <nav aria-label="Mobile navigation"><a href="/">Home</a><a href="/what-is-dpc">What Is DPC?</a><a href="/membership">Membership</a><a href="/services">Services</a><a href="/about">Meet the Team</a><a href="/faq">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/contact">Contact</a><a href="/meet-and-greet.html">Meet &amp; Greet</a></nav>
+    </details>
+  </div>
+</header>
   <main>
     <section class="blog-hero"><div class="blog-shell"><p class="blog-eyebrow">Insights from Dr. Hagen</p><h1>Primary Care &amp; Health Articles from Firebird DPC</h1><p>Practical guidance on primary care, prevention, family medicine, and the direct primary care model from Dr. Mark Hagen, DO in Worthington, Ohio.</p><p><a href="/family-medicine-worthington-ohio">Family Medicine in Worthington</a> · <a href="/what-is-dpc">How Direct Primary Care Works</a> · <a href="/primary-care-without-insurance-columbus-ohio">Primary Care Without Insurance</a></p></div></section>
     <section class="blog-main"><div class="blog-shell"><div id="blog-posts" class="blog-grid">${cards}</div></div></section>
