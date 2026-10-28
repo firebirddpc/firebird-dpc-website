@@ -24,6 +24,13 @@ for (const path of paths) {
     const closingHead = path === 'netlify/functions/blog-article.mjs' ? '</head><body><header class="site-header">' : '</head>';
     source = source.replace(closingHead, '<link rel="stylesheet" href="/site-header.css">\n' + closingHead);
   }
+  if (path !== 'index.html') {
+    source = source.replace(/<body>(?=\s*<header class="site-header">)/, '<body class="site-interior">');
+    source = source.replace(/<\/head>\s*(?=<header class="site-header">)/, '</head>\n<body class="site-interior">\n');
+    if (!source.includes('href="/site-theme.css"')) {
+      source = source.replace('<link rel="stylesheet" href="/site-header.css">', '<link rel="stylesheet" href="/site-header.css">\n<link rel="stylesheet" href="/site-theme.css">');
+    }
+  }
   writeFileSync(file, source);
   console.log(path);
 }
