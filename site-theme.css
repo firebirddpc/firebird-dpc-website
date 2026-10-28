@@ -1,0 +1,45 @@
+/* Shared interior-page colors and reading rhythm. Header styles live separately. */
+.site-interior { background: #fff; color: #243746; }
+.site-interior main { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+.site-interior main > section { padding-top: clamp(2.75rem,5vw,4.5rem); padding-bottom: clamp(2.75rem,5vw,4.5rem); }
+.site-interior main > section:nth-of-type(odd) { background: #fff; }
+.site-interior main > section:nth-of-type(even) { background: #f5ede1; }
+.site-interior main > section:first-child { background: #123044; color: #fff; padding-top: clamp(2.75rem,4.5vw,4rem); padding-bottom: clamp(2.75rem,4.5vw,4rem); border-bottom: 4px solid #edbd72; }
+.site-interior main > section:first-child h1 { max-width: 30ch; color: #fff; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: clamp(2.15rem,4vw,3.35rem); font-weight: 700; line-height: 1.12; letter-spacing: -.025em; text-wrap: balance; }
+.site-interior main > section:first-child p { color: #e3eaf0; line-height: 1.75; }
+.site-interior main > section:first-child .eyebrow { color: #f0c88d; line-height: 1.5; }
+.site-interior main > section:first-child p a { color: #ffdda8 !important; text-decoration-color: #ffdda8; }
+.site-interior main > section:first-child .button-secondary { color: #fff; border-color: #ffffff80; background: transparent; }
+.site-interior main > section:first-child .button-secondary:hover { background: #ffffff14; border-color: #fff; }
+.site-interior main > section:first-child .button-primary { background: #c22626; color: #fff; }
+.site-interior main :is(h2,h3) { line-height: 1.25; text-wrap: balance; }
+.site-interior main p { line-height: 1.75; }
+.site-interior main :is(.body-large,.leading-7) { max-width: 72ch; }
+.site-interior main p a:not([class*="button"]), .site-interior main li a:not([class*="button"]) { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.site-interior :is(.dpc-card,.include-card,.service-detail,.membership-price-card,.fact,.panel) { background: #fff; border-color: #d8dfe2; box-shadow: 0 4px 14px rgba(18,48,68,.045); }
+.site-interior .membership-price-card { border-top: 3px solid #c22626; }
+.site-interior .membership-card-detail { color: #485d6b; }
+.site-interior .faq-wrap { border-color: #d8dfe2; }
+.site-interior .faq-row:nth-child(even) { background: #f8f3eb; }
+.site-interior .faq-row p:last-child { color: #3e5361; }
+.site-interior main > section.site-cta { background: #123044; color: #fff; }
+.site-interior main > section.site-cta :is(h2,p) { color: #fff; }
+.site-interior main > section.site-cta .eyebrow { color: #f0c88d; }
+.site-interior main > section.site-cta .button-secondary { color: #fff; border-color: #ffffff80; background: transparent; }
+/* Blog pages retain their editorial cards with a heading scale shared by the site. */
+.site-interior .blog-hero { padding: clamp(2.75rem,4.5vw,4rem) 0; border-bottom: 4px solid #edbd72; }
+.site-interior .blog-hero h1, .site-interior .article-title { max-width: 30ch; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: clamp(2.15rem,4vw,3.35rem); font-weight: 700; line-height: 1.12; letter-spacing: -.025em; text-wrap: balance; }
+.site-interior .blog-hero p { max-width: 72ch; line-height: 1.75; }
+.site-interior .blog-hero .blog-eyebrow { color: #f0c88d; }
+.site-interior .blog-main { background: #f5ede1; padding: clamp(2.75rem,5vw,4.5rem) 0; }
+.site-interior .post-card__summary { color: #3e5361; line-height: 1.75; }
+.site-interior .article-body { color: #243746; line-height: 1.8; }
+.site-interior .article-description { color: #485d6b; }
+@media (max-width: 639px) {
+  .site-interior main > section:first-child h1 { max-width: 100%; }
+  .site-interior main > section:first-child .body-large { font-size: 1.075rem; }
+  .site-interior .membership-price-card { min-height: 145px; }
+}
+
+.site-interior main > section.site-cta .panel { background: transparent; border: 0; box-shadow: none; }
+.site-interior main > section.site-cta p a { color: #ffdda8 !important; }

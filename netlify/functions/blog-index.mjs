@@ -47,8 +47,9 @@ export async function handler(e) {
   <meta property="og:url" content="https://firebirddpc.com/blog/">
   <link rel="stylesheet" href="/blog.css">
 <link rel="stylesheet" href="/site-header.css">
+<link rel="stylesheet" href="/site-theme.css">
 </head>
-<body>
+<body class="site-interior">
   <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__logo" href="/" aria-label="Firebird Direct Primary Care home"><img src="/images/firebird-logo-rectangle-rising.png" alt="Firebird Direct Primary Care - Rising Above Traditional Medicine" width="1424" height="745"></a>
