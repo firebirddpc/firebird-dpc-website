@@ -26,6 +26,24 @@
     <script type="module" crossorigin src="/assets/index-dikjnlja.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-c8u2kb5d.css">
     <style>
+      .firebird-open-enrollment { padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem; background: #fffaf2; color: #123044; border-block: 1px solid #e6d9c6; }
+      .firebird-open-enrollment h2 { margin: .75rem 0 1rem; max-width: 27ch; font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+      .firebird-open-enrollment p { line-height: 1.7; }
+      .firebird-oe-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+      .firebird-oe-example { background: #fff; padding: clamp(1rem, 3vw, 1.75rem); border: 1px solid #d8dfe2; border-top: 4px solid #c22626; border-radius: .75rem; }
+      .firebird-oe-example h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: .75rem; }
+      .firebird-oe-example table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+      .firebird-oe-example th, .firebird-oe-example td { padding: .8rem .4rem; text-align: right; vertical-align: top; border-bottom: 1px solid #d8dfe2; }
+      .firebird-oe-example th:first-child { text-align: left; width: 42%; }
+      .firebird-oe-example thead th { font-size: .8rem; }
+      .firebird-oe-example tfoot { background: #edf2f5; font-weight: 800; }
+      .firebird-oe-note { margin-top: 1rem; font-size: .85rem; color: #435968; }
+      .firebird-oe-button { display: inline-flex; justify-content: center; margin: 1.5rem 0 .75rem; padding: .9rem 1.3rem; border-radius: 999px; background: #c22626; color: #fff; font-weight: 800; text-align: center; }
+      .firebird-oe-button:hover { background: #a71e1e; }
+      .firebird-oe-button:focus-visible { outline: 3px solid #123044; outline-offset: 4px; }
+      .firebird-oe-pricing { display: block; text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 760px) { .firebird-oe-grid { grid-template-columns: 1fr; } }
+
       .firebird-practice-gallery {
         display: none;
         padding: 4.5rem 1.25rem;
@@ -253,6 +271,33 @@
         </nav>
       </section>
     </main></noscript></div>
+    <template id="firebird-oe-template">
+    <section id="open-enrollment" class="firebird-open-enrollment" aria-labelledby="firebird-oe-heading">
+      <div class="container-page firebird-oe-grid">
+        <div>
+          <p class="eyebrow">Open enrollment · A fresh look at your healthcare</p>
+          <h2 id="firebird-oe-heading">Could your premium savings help pay for more personal primary care?</h2>
+          <p>As you compare health plans, consider the cost of insurance alongside the care you want day to day. Firebird membership gives you direct access to Dr. Hagen, unhurried visits, and ongoing primary care without per-visit copays for included services.</p>
+          <a class="firebird-oe-button" href="/meet-and-greet.html">Schedule a free meet-and-greet</a>
+          <a class="firebird-oe-pricing" href="/membership">Explore membership pricing and included care</a>
+        </div>
+        <div class="firebird-oe-example">
+          <h3>Hypothetical example · One adult, age 18–64</h3>
+          <table aria-label="Hypothetical monthly insurance premium and membership comparison">
+            <thead><tr><th scope="col">Monthly costs</th><th scope="col">Plan A</th><th scope="col">Plan B + Firebird</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Your insurance premium</th><td>$600</td><td>$450</td></tr>
+              <tr><th scope="row">Firebird membership</th><td>$0</td><td>$100</td></tr>
+            </tbody>
+            <tfoot><tr><th scope="row">Premium + membership</th><td>$600</td><td>$550</td></tr></tfoot>
+          </table>
+          <p class="firebird-oe-note">In this example, premium savings cover the membership with $50/month remaining ($600/year), before other medical expenses. Insurance premiums are invented for illustration, not quotes. The $100/month membership is Firebird’s current single-member rate for ages 18–64.</p>
+          <p class="firebird-oe-note">Compare your actual premium after any subsidy or employer contribution, deductible, out-of-pocket maximum, prescriptions, and provider network. A lower premium may come with higher costs when you need care. Consider both an ordinary year and a high-cost year; savings are not guaranteed.</p>
+          <p class="firebird-oe-note"><strong>DPC is not insurance.</strong> Membership does not cover hospitalization, emergency care, specialists, or other services outside the membership. Labs, imaging, medications, and selected procedures may cost extra. Keep appropriate major medical coverage; an insurance agent can help you compare plans.</p>
+        </div>
+      </div>
+    </section>
+    </template>
     <section class="firebird-practice-gallery" aria-label="Inside Firebird Direct Primary Care">
       <div class="container-page">
         <p class="eyebrow">Inside the practice</p>
@@ -511,6 +556,13 @@
           link.style.cssText = "display:inline-block;margin:0.6rem 1rem 0.6rem 0;text-decoration:underline";
           (footer.querySelector("nav") || footer).append(link);
         };
+        const placeOpenEnrollment = () => {
+          if (location.pathname !== "/") return;
+          const hero = document.querySelector("#root main section");
+          if (!hero || document.getElementById("open-enrollment")) return;
+          const template = document.getElementById("firebird-oe-template");
+          hero.after(template.content.cloneNode(true));
+        };
         const placeGallery = () => {
           const footer = document.querySelector("#root footer");
           if (!footer || !gallery || gallery.classList.contains("is-ready")) return false;
@@ -527,7 +579,8 @@
         };
         if (!placeGallery()) {
           const observer = new MutationObserver(() => {
-                placeGallery();
+            placeOpenEnrollment();
+            placeGallery();
             placeNewsletter();
             addBlogLinks();
             addPrivacyNoticeLink();
@@ -538,6 +591,7 @@
           });
           observer.observe(document.getElementById("root"), { childList: true, subtree: true });
         }
+        placeOpenEnrollment();
         placeNewsletter();
         addPrivacyNoticeLink();
         addBlogLinks();
